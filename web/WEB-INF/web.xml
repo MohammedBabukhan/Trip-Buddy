@@ -4,9 +4,17 @@
         <servlet-name>RegistrationChecker</servlet-name>
         <servlet-class>controller.RegistrationChecker</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>LoginChecker</servlet-name>
+        <servlet-class>controller.LoginChecker</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>RegistrationChecker</servlet-name>
         <url-pattern>/RegistrationChecker</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LoginChecker</servlet-name>
+        <url-pattern>/LoginChecker</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
