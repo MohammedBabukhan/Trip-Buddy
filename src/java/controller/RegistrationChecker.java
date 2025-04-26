@@ -83,7 +83,7 @@ public class RegistrationChecker extends HttpServlet {
                 out.println("<body>");
                 out.println("<script type='text/javascript'>");
                 out.println("alert('Registration Succesful. Kindly Login...!');");
-                out.println("window.location.href = 'Login.html';"); 
+                out.println("window.location.href = 'Login.jsp';"); 
                 out.println("</script>");
                 out.println("</body>");
                 out.println("</html>");

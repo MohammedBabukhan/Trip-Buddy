@@ -581,14 +581,15 @@
             </div>
         </div>
     </section>
-    
+    <script src="https://cdn.botpress.cloud/webchat/v2.4/inject.js"></script>
+    <script src="https://files.bpcontent.cloud/2025/04/20/11/20250420115751-L8TC1QY4.js"></script>
     <!-- Chatbot Widget -->
-    <div class="chatbot-widget">
+<!--    <div class="chatbot-widget">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
         </svg>
     </div>
-    
+    -->
     <!-- Footer -->
     <footer>
         <div class="container">
