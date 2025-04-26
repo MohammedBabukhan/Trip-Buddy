@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TravelEase - Your Complete Travel Solution</title>
+    <title>Trip Buddy - Your Complete Travel Solution</title>
     <style>
         * {
             margin: 0;
@@ -379,7 +379,7 @@
     <!-- Header -->
     <header>
         <div class="container header-container">
-            <div class="logo">TravelEase</div>
+            <div class="logo">Trip Buddy</div>
             <ul class="nav-menu">
                 <li><a href="#">Home</a></li>
                 <li><a href="#">Flights</a></li>
@@ -388,8 +388,8 @@
                 <li><a href="#">Car Rentals</a></li>
             </ul>
             <div class="auth-buttons">
-                <button class="btn btn-outline">Login</button>
-                <button class="btn btn-primary">Register</button>
+                <button class="btn btn-outline" id="loginButton">Login</button>
+                <button class="btn btn-primary" id="registerButton">Register</button>
             </div>
         </div>
     </header>
@@ -675,7 +675,14 @@
                 weatherCity.textContent = 'New York, USA';
             }
         });
-        
+         document.getElementById('loginButton').addEventListener('click', function() {
+            window.location.href = 'Login.jsp';
+        });
+        document.getElementById('registerButton').addEventListener('click', function() {
+            // Redirect to register page when needed
+             window.location.href = 'Registration.html';
+//            alert('Registration functionality will be added soon!');
+        });
         // Chatbot widget toggle (simplified version)
         const chatbotWidget = document.querySelector('.chatbot-widget');
         chatbotWidget.addEventListener('click', () => {
