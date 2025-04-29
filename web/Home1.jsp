@@ -403,31 +403,22 @@
             <!-- Search Form -->
             <div class="search-form">
                 <div class="form-tabs">
-                    <div class="form-tab active">Flights</div>
-                    <div class="form-tab">Hotels</div>
+                    <!--<div class="form-tab active">Flights</div>-->
+                    <div class="form-tab active">Hotels</div>
                     <div class="form-tab">Packages</div>
                     <div class="form-tab">Car Rentals</div>
                 </div>
                 
                 <form>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="departure">From</label>
-                            <input type="text" id="departure" placeholder="City or Airport">
-                        </div>
-                        <div class="form-group">
-                            <label for="arrival">To</label>
-                            <input type="text" id="arrival" placeholder="City or Airport">
-                        </div>
-                    </div>
+                    
                     
                     <div class="form-row">
                         <div class="form-group">
-                            <label for="depart-date">Depart</label>
+                            <label for="depart-date">Arrival</label>
                             <input type="date" id="depart-date">
                         </div>
                         <div class="form-group">
-                            <label for="return-date">Return</label>
+                            <label for="return-date">Departure</label>
                             <input type="date" id="return-date">
                         </div>
                         <div class="form-group">
@@ -636,7 +627,7 @@
             </div>
             
             <div class="footer-bottom">
-                <p>&copy; 2025 TravelEase. All rights reserved.</p>
+                <p>&copy; 2025 Trip Buddy. All rights reserved.</p>
             </div>
         </div>
     </footer>
