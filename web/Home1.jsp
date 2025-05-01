@@ -460,78 +460,64 @@
             </div>
         </div>
     </div>
-    
-    <!-- Services Section -->
-    <section class="services">
-        <div class="container">
-            <div class="section-title">
+<section class="services" style="display: flex; justify-content: center; align-items: center; min-height: 100vh;">
+        <div class="container" style="max-width: 1200px; margin: 0 auto;">
+            <div class="section-title" style="text-align: center;">
                 <h2>Our Services</h2>
                 <p>Everything you need for your perfect trip in one place.</p>
             </div>
             
-            <div class="services-grid">
-                <div class="service-card">
+            <div class="services-grid" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px;">
+                <div class="service-card" style="flex: 0 1 calc(33.333% - 20px); min-width: 300px; background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
                     <div class="service-img">
-                        <img src="/api/placeholder/400/300" alt="Flight Booking">
+                        <img src="457347489.jpg" alt="Hotel Booking" style="width: 100%; height: auto; display: block;">
                     </div>
-                    <div class="service-content">
-                        <h3>Flight Tickets</h3>
-                        <p>Find the best deals on flights to destinations worldwide.</p>
-                        <a href="#" class="btn btn-outline">Book Now</a>
-                    </div>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-img">
-                        <img src="/api/placeholder/400/300" alt="Hotel Booking">
-                    </div>
-                    <div class="service-content">
+                    <div class="service-content" style="padding: 20px;">
                         <h3>Hotel Reservations</h3>
                         <p>Book your stay at the best hotels with exclusive discounts.</p>
-                        <a href="#" class="btn btn-outline">Find Hotels</a>
+                        <a href="#" class="btn btn-outline" style="display: inline-block; padding: 8px 16px; border: 1px solid #0066cc; color: #0066cc; text-decoration: none; border-radius: 4px; margin-top: 10px; transition: all 0.3s;">Find Hotels</a>
                     </div>
                 </div>
                 
-                <div class="service-card">
+                <div class="service-card" style="flex: 0 1 calc(33.333% - 20px); min-width: 300px; background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
                     <div class="service-img">
-                        <img src="/api/placeholder/400/300" alt="Travel Packages">
+                        <img src="/api/placeholder/400/300" alt="Travel Packages" style="width: 100%; height: auto; display: block;">
                     </div>
-                    <div class="service-content">
+                    <div class="service-content" style="padding: 20px;">
                         <h3>Vacation Packages</h3>
                         <p>All-inclusive packages for a hassle-free trip experience.</p>
-                        <a href="#" class="btn btn-outline">Explore Packages</a>
+                        <a href="#" class="btn btn-outline" style="display: inline-block; padding: 8px 16px; border: 1px solid #0066cc; color: #0066cc; text-decoration: none; border-radius: 4px; margin-top: 10px; transition: all 0.3s;">Explore Packages</a>
                     </div>
                 </div>
                 
-                <div class="service-card">
+                <div class="service-card" style="flex: 0 1 calc(33.333% - 20px); min-width: 300px; background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
                     <div class="service-img">
-                        <img src="/api/placeholder/400/300" alt="Car Rental">
+                        <img src="images.jpg" alt="Car Rental" style="width: 100%; height: auto; display: block;">
                     </div>
-                    <div class="service-content">
+                    <div class="service-content" style="padding: 20px;">
                         <h3>Car Rentals</h3>
                         <p>Rent vehicles for your trips at affordable prices.</p>
-                        <a href="#" class="btn btn-outline">Rent a Car</a>
+                        <a href="#" class="btn btn-outline" style="display: inline-block; padding: 8px 16px; border: 1px solid #0066cc; color: #0066cc; text-decoration: none; border-radius: 4px; margin-top: 10px; transition: all 0.3s;">Rent a Car</a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    
     <!-- Popular Destinations Section -->
     <section class="services">
         <div class="container">
             <div class="section-title">
                 <h2>Popular Destinations</h2>
-                <p>Explore top-rated locations loved by travelers around the world.</p>
+                <p>Explore top-rated locations loved by travelers around the Indore.</p>
             </div>
             
             <div class="services-grid">
                 <div class="service-card">
                     <div class="service-img">
-                        <img src="/api/placeholder/400/300" alt="Paris">
+                        <img src="simcha.jpg" alt="Paris">
                     </div>
                     <div class="service-content">
-                        <h3>Paris, France</h3>
+                        <h3>Simcha Island</h3>
                         <p>The city of lights and romance.</p>
                         <a href="#" class="btn btn-outline">View Deals</a>
                     </div>
@@ -539,10 +525,10 @@
                 
                 <div class="service-card">
                     <div class="service-img">
-                        <img src="/api/placeholder/400/300" alt="Bali">
+                        <img src="lotus.jpg" alt="Bali">
                     </div>
                     <div class="service-content">
-                        <h3>Bali, Indonesia</h3>
+                        <h3>Lotus Valley</h3>
                         <p>Tropical paradise with beautiful beaches.</p>
                         <a href="#" class="btn btn-outline">View Deals</a>
                     </div>
