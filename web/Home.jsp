@@ -373,6 +373,90 @@
                 font-size: 36px;
             }
         }
+        .form-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        align-items: flex-start;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+    
+    .form-group {
+        flex: 1;
+        min-width: 200px;
+    }
+    
+    .form-group > label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 500;
+    }
+    
+    .form-control {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 16px;
+    }
+    
+    .travelers-container {
+        width: 100%;
+    }
+    
+    .traveler-inputs {
+        display: flex;
+        gap: 15px;
+    }
+    
+    .traveler-group {
+        flex: 1;
+    }
+    
+    .traveler-group label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: normal;
+    }
+    
+    input[type="number"] {
+        text-align: center;
+    }
+    .profile-container {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .profile-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: #FFFFFF;
+            color: #FF6A00;
+            font-size: 1.5em;
+            font-weight: bold;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .profile-icon:hover {
+            background: #FFD700;
+            transform: scale(1.1);
+        }
+
+        .profile-container:hover .tooltip {
+            display: block;
+        }
     </style>
 </head>
 <body>
@@ -382,15 +466,18 @@
             <div class="logo">Trip Buddy</div>
             <ul class="nav-menu">
                 <li><a href="#">Home</a></li>
-                <li><a href="#">Flights</a></li>
+                <!--<li><a href="#">Flights</a></li>-->
                 <li><a href="#">Hotels</a></li>
                 <li><a href="#">Packages</a></li>
                 <li><a href="#">Car Rentals</a></li>
             </ul>
-            <div class="auth-buttons">
-                <button class="btn btn-outline" id="loginButton">Login</button>
-                <button class="btn btn-primary" id="registerButton">Register</button>
-            </div>
+           <div class="profile-container">
+        <a href="Profile.jsp">
+            <div class="profile-icon">P</div>
+        </a>
+        <div class="tooltip">My Profile</div>
+    </div>
+    
         </div>
     </header>
     
@@ -410,28 +497,33 @@
                 </div>
                 
                 <form>
-                    
-                    
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="depart-date">Arrival</label>
-                            <input type="date" id="depart-date">
-                        </div>
-                        <div class="form-group">
-                            <label for="return-date">Departure</label>
-                            <input type="date" id="return-date">
-                        </div>
-                        <div class="form-group">
-                            <label for="travelers">Travelers</label>
-                            <select id="travelers">
-                                <option>1 Adult</option>
-                                <option>2 Adults</option>
-                                <option>2 Adults, 1 Child</option>
-                                <option>2 Adults, 2 Children</option>
-                            </select>
-                        </div>
-                    </div>
-                    
+    <!-- Detailed selection -->
+    <div class="form-row">
+    <div class="form-group">
+        <label for="depart-date">Arrival</label>
+        <input type="date" id="depart-date" class="form-control">
+    </div>
+    <div class="form-group">
+        <label for="return-date">Departure</label>
+        <input type="date" id="return-date" class="form-control">
+    </div>
+    <div class="form-group">
+        <label>Travelers</label>
+        <div class="travelers-container">
+            <div class="traveler-inputs">
+                <div class="traveler-group">
+                    <label for="adults">Adults</label>
+                    <input type="number" id="adults" name="adults" min="1" max="10" value="1" class="form-control">
+                </div>
+                <div class="traveler-group">
+                    <label for="children">Children</label>
+                    <input type="number" id="children" name="children" min="0" max="10" value="0" class="form-control">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
                     <button type="submit" class="search-btn">Search</button>
                 </form>
             </div>
@@ -460,78 +552,64 @@
             </div>
         </div>
     </div>
-    
-    <!-- Services Section -->
-    <section class="services">
-        <div class="container">
-            <div class="section-title">
+<section class="services" style="display: flex; justify-content: center; align-items: center; min-height: 100vh;">
+        <div class="container" style="max-width: 1200px; margin: 0 auto;">
+            <div class="section-title" style="text-align: center;">
                 <h2>Our Services</h2>
                 <p>Everything you need for your perfect trip in one place.</p>
             </div>
             
-            <div class="services-grid">
-                <div class="service-card">
+            <div class="services-grid" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px;">
+                <div class="service-card" style="flex: 0 1 calc(33.333% - 20px); min-width: 300px; background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
                     <div class="service-img">
-                        <img src="/api/placeholder/400/300" alt="Flight Booking">
+                        <img src="457347489.jpg" alt="Hotel Booking" style="width: 100%; height: 200px; display: block;">
                     </div>
-                    <div class="service-content">
-                        <h3>Flight Tickets</h3>
-                        <p>Find the best deals on flights to destinations worldwide.</p>
-                        <a href="#" class="btn btn-outline">Book Now</a>
-                    </div>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-img">
-                        <img src="/api/placeholder/400/300" alt="Hotel Booking">
-                    </div>
-                    <div class="service-content">
+                    <div class="service-content" style="padding: 20px;">
                         <h3>Hotel Reservations</h3>
                         <p>Book your stay at the best hotels with exclusive discounts.</p>
-                        <a href="#" class="btn btn-outline">Find Hotels</a>
+                        <a href="#" class="btn btn-outline" style="display: inline-block; padding: 8px 16px; border: 1px solid #0066cc; color: #0066cc; text-decoration: none; border-radius: 4px; margin-top: 10px; transition: all 0.3s;">Find Hotels</a>
                     </div>
                 </div>
                 
-                <div class="service-card">
+                <div class="service-card" style="flex: 0 1 calc(33.333% - 20px); min-width: 300px; background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
                     <div class="service-img">
-                        <img src="/api/placeholder/400/300" alt="Travel Packages">
+                        <img src="tour.jpg" alt="Travel Packages" style="width: 100%; height: 200px; display: block;">
                     </div>
-                    <div class="service-content">
+                    <div class="service-content" style="padding: 20px;">
                         <h3>Vacation Packages</h3>
                         <p>All-inclusive packages for a hassle-free trip experience.</p>
-                        <a href="#" class="btn btn-outline">Explore Packages</a>
+                        <a href="#" class="btn btn-outline" style="display: inline-block; padding: 8px 16px; border: 1px solid #0066cc; color: #0066cc; text-decoration: none; border-radius: 4px; margin-top: 10px; transition: all 0.3s;">Explore Packages</a>
                     </div>
                 </div>
                 
-                <div class="service-card">
+                <div class="service-card" style="flex: 0 1 calc(33.333% - 20px); min-width: 300px; background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
                     <div class="service-img">
-                        <img src="/api/placeholder/400/300" alt="Car Rental">
+                        <img src="car.jpg" alt="Car Rental" style="width: 100%; height: 200px; display: block;">
                     </div>
-                    <div class="service-content">
+                    <div class="service-content" style="padding: 20px;">
                         <h3>Car Rentals</h3>
                         <p>Rent vehicles for your trips at affordable prices.</p>
-                        <a href="#" class="btn btn-outline">Rent a Car</a>
+                        <a href="#" class="btn btn-outline" style="display: inline-block; padding: 8px 16px; border: 1px solid #0066cc; color: #0066cc; text-decoration: none; border-radius: 4px; margin-top: 10px; transition: all 0.3s;">Rent a Car</a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    
     <!-- Popular Destinations Section -->
     <section class="services">
         <div class="container">
             <div class="section-title">
                 <h2>Popular Destinations</h2>
-                <p>Explore top-rated locations loved by travelers around the world.</p>
+                <p>Explore top-rated locations loved by travelers around the Indore.</p>
             </div>
             
             <div class="services-grid">
                 <div class="service-card">
                     <div class="service-img">
-                        <img src="/api/placeholder/400/300" alt="Paris">
+                        <img src="Rajwada-Indore.jpg" alt="Rajwada Palace" height="200px">
                     </div>
                     <div class="service-content">
-                        <h3>Paris, France</h3>
+                        <h3>Rajwada Palace</h3>
                         <p>The city of lights and romance.</p>
                         <a href="#" class="btn btn-outline">View Deals</a>
                     </div>
@@ -539,10 +617,10 @@
                 
                 <div class="service-card">
                     <div class="service-img">
-                        <img src="/api/placeholder/400/300" alt="Bali">
+                        <img src="lotus.jpg" alt="Lotus Valley" height="200px" width="100%">
                     </div>
                     <div class="service-content">
-                        <h3>Bali, Indonesia</h3>
+                        <h3>Lotus Valley</h3>
                         <p>Tropical paradise with beautiful beaches.</p>
                         <a href="#" class="btn btn-outline">View Deals</a>
                     </div>
@@ -550,7 +628,7 @@
                 
                 <div class="service-card">
                     <div class="service-img">
-                        <img src="/api/placeholder/400/300" alt="New York">
+                        <img src"" alt="New York">
                     </div>
                     <div class="service-content">
                         <h3>New York, USA</h3>

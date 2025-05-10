@@ -373,6 +373,56 @@
                 font-size: 36px;
             }
         }
+        .form-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        align-items: flex-start;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+    
+    .form-group {
+        flex: 1;
+        min-width: 200px;
+    }
+    
+    .form-group > label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 500;
+    }
+    
+    .form-control {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 16px;
+    }
+    
+    .travelers-container {
+        width: 100%;
+    }
+    
+    .traveler-inputs {
+        display: flex;
+        gap: 15px;
+    }
+    
+    .traveler-group {
+        flex: 1;
+    }
+    
+    .traveler-group label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: normal;
+    }
+    
+    input[type="number"] {
+        text-align: center;
+    }
     </style>
 </head>
 <body>
@@ -382,7 +432,7 @@
             <div class="logo">Trip Buddy</div>
             <ul class="nav-menu">
                 <li><a href="#">Home</a></li>
-                <li><a href="#">Flights</a></li>
+                <!--<li><a href="#">Flights</a></li>-->
                 <li><a href="#">Hotels</a></li>
                 <li><a href="#">Packages</a></li>
                 <li><a href="#">Car Rentals</a></li>
@@ -410,28 +460,33 @@
                 </div>
                 
                 <form>
-                    
-                    
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="depart-date">Arrival</label>
-                            <input type="date" id="depart-date">
-                        </div>
-                        <div class="form-group">
-                            <label for="return-date">Departure</label>
-                            <input type="date" id="return-date">
-                        </div>
-                        <div class="form-group">
-                            <label for="travelers">Travelers</label>
-                            <select id="travelers">
-                                <option>1 Adult</option>
-                                <option>2 Adults</option>
-                                <option>2 Adults, 1 Child</option>
-                                <option>2 Adults, 2 Children</option>
-                            </select>
-                        </div>
-                    </div>
-                    
+    <!-- Detailed selection -->
+    <div class="form-row">
+    <div class="form-group">
+        <label for="depart-date">Arrival</label>
+        <input type="date" id="depart-date" class="form-control">
+    </div>
+    <div class="form-group">
+        <label for="return-date">Departure</label>
+        <input type="date" id="return-date" class="form-control">
+    </div>
+    <div class="form-group">
+        <label>Travelers</label>
+        <div class="travelers-container">
+            <div class="traveler-inputs">
+                <div class="traveler-group">
+                    <label for="adults">Adults</label>
+                    <input type="number" id="adults" name="adults" min="1" max="10" value="1" class="form-control">
+                </div>
+                <div class="traveler-group">
+                    <label for="children">Children</label>
+                    <input type="number" id="children" name="children" min="0" max="10" value="0" class="form-control">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
                     <button type="submit" class="search-btn">Search</button>
                 </form>
             </div>
@@ -470,7 +525,7 @@
             <div class="services-grid" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px;">
                 <div class="service-card" style="flex: 0 1 calc(33.333% - 20px); min-width: 300px; background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
                     <div class="service-img">
-                        <img src="457347489.jpg" alt="Hotel Booking" style="width: 100%; height: auto; display: block;">
+                        <img src="457347489.jpg" alt="Hotel Booking" style="width: 100%; height: 200px; display: block;">
                     </div>
                     <div class="service-content" style="padding: 20px;">
                         <h3>Hotel Reservations</h3>
@@ -481,7 +536,7 @@
                 
                 <div class="service-card" style="flex: 0 1 calc(33.333% - 20px); min-width: 300px; background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
                     <div class="service-img">
-                        <img src="/api/placeholder/400/300" alt="Travel Packages" style="width: 100%; height: auto; display: block;">
+                        <img src="tour.jpg" alt="Travel Packages" style="width: 100%; height: 200px; display: block;">
                     </div>
                     <div class="service-content" style="padding: 20px;">
                         <h3>Vacation Packages</h3>
@@ -492,7 +547,7 @@
                 
                 <div class="service-card" style="flex: 0 1 calc(33.333% - 20px); min-width: 300px; background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
                     <div class="service-img">
-                        <img src="images.jpg" alt="Car Rental" style="width: 100%; height: auto; display: block;">
+                        <img src="car.jpg" alt="Car Rental" style="width: 100%; height: 200px; display: block;">
                     </div>
                     <div class="service-content" style="padding: 20px;">
                         <h3>Car Rentals</h3>
@@ -514,10 +569,10 @@
             <div class="services-grid">
                 <div class="service-card">
                     <div class="service-img">
-                        <img src="simcha.jpg" alt="Paris">
+                        <img src="Rajwada-Indore.jpg" alt="Rajwada Palace" height="200px">
                     </div>
                     <div class="service-content">
-                        <h3>Simcha Island</h3>
+                        <h3>Rajwada Palace</h3>
                         <p>The city of lights and romance.</p>
                         <a href="#" class="btn btn-outline">View Deals</a>
                     </div>
@@ -525,7 +580,7 @@
                 
                 <div class="service-card">
                     <div class="service-img">
-                        <img src="lotus.jpg" alt="Bali">
+                        <img src="lotus.jpg" alt="Lotus Valley" height="200px" width="100%">
                     </div>
                     <div class="service-content">
                         <h3>Lotus Valley</h3>
@@ -536,7 +591,7 @@
                 
                 <div class="service-card">
                     <div class="service-img">
-                        <img src="/api/placeholder/400/300" alt="New York">
+                        <img src"" alt="New York">
                     </div>
                     <div class="service-content">
                         <h3>New York, USA</h3>
