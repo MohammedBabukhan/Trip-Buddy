@@ -496,7 +496,7 @@
                     <div class="form-tab">Car Rentals</div>
                 </div>
                 
-                <form>
+                <form method="post" action="Search.jsp">
     <!-- Detailed selection -->
     <div class="form-row">
     <div class="form-group">

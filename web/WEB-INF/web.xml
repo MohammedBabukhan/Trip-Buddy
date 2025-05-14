@@ -8,6 +8,10 @@
         <servlet-name>LoginChecker</servlet-name>
         <servlet-class>controller.LoginChecker</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Search</servlet-name>
+        <servlet-class>controller.Search</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>RegistrationChecker</servlet-name>
         <url-pattern>/RegistrationChecker</url-pattern>
@@ -15,6 +19,10 @@
     <servlet-mapping>
         <servlet-name>LoginChecker</servlet-name>
         <url-pattern>/LoginChecker</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Search</servlet-name>
+        <url-pattern>/Search</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
