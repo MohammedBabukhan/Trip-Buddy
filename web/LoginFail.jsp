@@ -13,72 +13,139 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            background: linear-gradient(135deg, #ff6a00, #ee0979); /* Orange to pink gradient */
-            font-family: Arial, sans-serif;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #6a11cb, #2575fc); /* Deep purple to blue gradient */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             color: #333;
         }
-
-        /* Center container for the form */
+        
         .login-container {
-            background: #ffffff;
-            border-radius: 10px;
-            padding: 30px 40px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
             text-align: center;
-            width: 400px;
+            width: 380px;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease;
         }
-
-        /* Form heading */
+        
+        .login-container:hover {
+            transform: translateY(-5px);
+        }
+        
         h1 {
-            font-size: 24px;
-            color: #ff9500; /* A vibrant orange matching the background theme */
+            font-size: 28px;
+            color: #4a6cf7;
+            margin-bottom: 30px;
+            font-weight: 600;
+            position: relative;
+            padding-bottom: 12px;
+        }
+        
+        h1::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(90deg, #6a11cb, #2575fc);
+            border-radius: 2px;
+        }
+        
+        form {
             margin-bottom: 20px;
         }
-
-        /* Table styling */
+        
         table {
             width: 100%;
         }
-
+        
         table td {
-            padding: 10px 0;
+            padding: 8px 0;
             text-align: left;
         }
-
-        /* Input fields styling */
+        
         input[type="email"], input[type="password"] {
             width: 100%;
-            padding: 10px;
-            margin: 5px 0;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            font-size: 14px;
+            padding: 12px 15px;
+            margin: 8px 0;
+            border: 2px solid #e1e5ee;
+            border-radius: 8px;
+            font-size: 15px;
+            transition: all 0.3s ease;
+            box-sizing: border-box;
+            background-color: #f8fafc;
         }
-
-        /* Error message styling */
-        .error-message {
-            color: #e63946; /* Red for error */
-            font-size: 14px;
-            margin-top: -10px;
-            margin-bottom: 10px;
-            text-align: left;
+        
+        input[type="email"]:focus, input[type="password"]:focus {
+            border-color: #4a6cf7;
+            box-shadow: 0 0 0 3px rgba(74, 108, 247, 0.2);
+            outline: none;
         }
-
-        /* Login button styling */
+        
         input[type="submit"] {
-            background-color: #ff6a00; /* Orange button color */
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
             color: #fff;
             border: none;
-            padding: 10px 15px;
-            font-size: 14px;
-            border-radius: 5px;
+            padding: 12px 20px;
+            font-size: 16px;
+            border-radius: 8px;
             cursor: pointer;
-            transition: background-color 0.3s ease;
+            transition: all 0.3s ease;
+            width: 100%;
+            font-weight: 600;
+            margin-top: 10px;
+            box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
         }
-
+        
         input[type="submit"]:hover {
-            background-color: #ee0979; /* Pink hover effect */
+            transform: translateY(-2px);
+            box-shadow: 0 7px 14px rgba(50, 50, 93, 0.1), 0 3px 6px rgba(0, 0, 0, 0.08);
+            background: linear-gradient(135deg, #5c0fb1, #1e68e0);
+        }
+        
+        input[type="submit"]:active {
+            transform: translateY(1px);
+        }
+        
+        .links {
+            margin-top: 25px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .links p {
+            margin: 5px 0;
+        }
+        
+        a {
+            color: #4a6cf7;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        a:hover {
+            color: #2575fc;
+        }
+        
+        .field-label {
+            font-weight: 600;
+            color: #555;
+            margin-bottom: 5px;
+            font-size: 14px;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 480px) {
+            .login-container {
+                width: 88%;
+                padding: 30px 20px;
+            }
         }
     </style>
 </head>

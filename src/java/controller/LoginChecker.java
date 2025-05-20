@@ -18,10 +18,7 @@ import java.sql.Statement;
 
 
 
-/**
- *
- * @author mitesh
- */
+
 public class LoginChecker extends HttpServlet 
 {
    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 

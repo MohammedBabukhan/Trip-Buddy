@@ -1,35 +1,63 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+                             http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+         version="3.0">
+
     <servlet>
         <servlet-name>RegistrationChecker</servlet-name>
         <servlet-class>controller.RegistrationChecker</servlet-class>
     </servlet>
+
     <servlet>
         <servlet-name>LoginChecker</servlet-name>
         <servlet-class>controller.LoginChecker</servlet-class>
     </servlet>
+
     <servlet>
         <servlet-name>Search</servlet-name>
         <servlet-class>controller.Search</servlet-class>
     </servlet>
+
+    <servlet>
+        <servlet-name>Deleteaccount</servlet-name>
+        <servlet-class>controller.Deleteaccount</servlet-class>
+    </servlet>
+
     <servlet-mapping>
         <servlet-name>RegistrationChecker</servlet-name>
         <url-pattern>/RegistrationChecker</url-pattern>
     </servlet-mapping>
+
     <servlet-mapping>
         <servlet-name>LoginChecker</servlet-name>
         <url-pattern>/LoginChecker</url-pattern>
     </servlet-mapping>
+
     <servlet-mapping>
         <servlet-name>Search</servlet-name>
         <url-pattern>/Search</url-pattern>
     </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>Deleteaccount</servlet-name>
+        <url-pattern>/Deleteaccount</url-pattern>
+    </servlet-mapping>
+
     <session-config>
-        <session-timeout>
-            30
-        </session-timeout>
+        <session-timeout>30</session-timeout>
     </session-config>
+
     <welcome-file-list>
         <welcome-file>Home1.jsp</welcome-file>
     </welcome-file-list>
+
+    <jsp-config>
+        <taglib>
+            <taglib-uri>http://java.sun.com/jsp/jstl/core</taglib-uri>
+            <taglib-location>/WEB-INF/lib/jstl-1.2.jar</taglib-location>
+        </taglib>
+    </jsp-config>
+
 </web-app>

@@ -7,9 +7,9 @@
     String name = "", email = "", mobile = "", city = "", age = "", gender = "", budget = "", fdate = "", tdate = "";
 
     try {
-        String email1 = (String) session.getAttribute("useremail");
+        String emaill = (String) session.getAttribute("useremail");
         Statement st = DBConnector.getStatement();
-        String query = "SELECT * FROM tb WHERE email='" + email1 + "'";
+        String query = "SELECT * FROM tb WHERE email='" + emaill + "'";
         ResultSet rs = st.executeQuery(query);
 
         while (rs.next()) {
@@ -49,6 +49,7 @@
             border-radius: 15px;
             padding: 40px;
             backdrop-filter: blur(10px);
+            position: relative;
         }
 
         h1 {
@@ -116,11 +117,88 @@
             color: #00e0ff;
             text-shadow: 0 0 8px #00e0ff;
         }
+        
+        /* New styles for the top right buttons */
+        .top-buttons {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            gap: 10px;
+        }
+        
+        .signout-btn {
+            background: linear-gradient(135deg, #48cae4, #0096c7);
+            color: white;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        }
+        
+        .delete-btn {
+            background: linear-gradient(135deg, #ff4d6d, #c9184a);
+            color: white;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        }
+        
+        .signout-btn:hover, .delete-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+        }
+        
+        .delete-btn:hover {
+            background: linear-gradient(135deg, #ff758f, #d90429);
+        }
+        .home-icon {
+            font-size: 20px;
+            text-decoration: none;
+            color: #333;
+            display: flex;
+            align-items: center;
+            transition: color 0.3s ease;
+        }
+
+        .home-icon:hover {
+            color: #FF6A00;
+        }
+
+        .home-icon img {
+            width: 24px;
+            height: 24px;
+            margin-right: 8px;
+        }
+
     </style>
 </head>
 <body>
-
+<a href="Home.jsp" class="home-icon">
+            <img src="https://cdn-icons-png.flaticon.com/512/25/25694.png" alt="Home Icon">
+            Home
+        </a>
 <div class="container">
+    <!-- New buttons added to top right corner -->
+    <div class="top-buttons">
+        <form action="Logout.jsp" method="post">
+            <button type="submit" class="signout-btn">Sign Out</button>
+        </form>
+        <form action="Deleteaccount" method="post" onsubmit="return confirm('Are you sure you want to delete your account? This action cannot be undone.');">
+            <input type="hidden" name="email" value="<%=email%>">
+            <button type="submit" class="delete-btn">Delete Account</button>
+        </form>
+    </div>
+
     <h1 class="glow">My Profile</h1>
 
     <div class="profile-field"><div class="label">Name</div><div class="value"><%=name %></div></div>
@@ -133,7 +211,7 @@
     <div class="profile-field"><div class="label">Travel Start Date</div><div class="value"><%=fdate %></div></div>
     <div class="profile-field"><div class="label">Travel End Date</div><div class="value"><%=tdate %></div></div>
 
-    <!-- ? Edit Profile Button inside the container and well placed -->
+    <!-- Edit Profile Button inside the container -->
     <div style="text-align: center;">
         <form action="Edit_Profile.jsp" method="post">
             <button type="submit" class="edit-btn">Edit Profile</button>

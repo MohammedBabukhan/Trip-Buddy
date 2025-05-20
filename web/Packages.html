@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Indore Tour Packages</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        :root {
+            --primary-color: #e65c00;
+            --secondary-color: #f9a826;
+            --dark-color: #333333;
+            --light-color: #f5f5f5;
+            --accent-color: #2e7d32;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: var(--dark-color);
+        }
+        
+        header {
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 2rem 1rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 30px;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 100'%3E%3Cpath fill='%23f5f5f5' d='M0,64L60,58.7C120,53,240,43,360,48C480,53,600,75,720,80C840,85,960,75,1080,61.3C1200,48,1320,32,1380,24L1440,16L1440,100L1380,100C1320,100,1200,100,1080,100C960,100,840,100,720,100C600,100,480,100,360,100C240,100,120,100,60,100L0,100Z'%3E%3C/path%3E%3C/svg%3E") no-repeat bottom center;
+            background-size: cover;
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .header-subtitle {
+            margin-top: 0.5rem;
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+        
+        .filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .filter-group {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .filter-title {
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+            font-size: 1.3rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        .filter-title::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--secondary-color);
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 0.3rem;
+            font-weight: bold;
+            color: #555;
+        }
+        
+        select, input {
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            width: 100%;
+            font-size: 1rem;
+        }
+        
+        button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            font-size: 1rem;
+            font-weight: bold;
+        }
+        
+        button:hover {
+            background-color: var(--secondary-color);
+        }
+        
+        .apply-filters-btn {
+            margin-top: 1.5rem;
+            align-self: flex-end;
+            width: 100%;
+        }
+        
+        .packages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+        
+        .package-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+            position: relative;
+        }
+        
+        .package-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .package-image {
+            height: 200px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .package-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .package-card:hover .package-image img {
+            transform: scale(1.1);
+        }
+        
+        .package-duration {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: rgba(0,0,0,0.7);
+            color: white;
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+        
+        .package-price {
+            position: absolute;
+            bottom: -15px;
+            right: 20px;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            box-shadow: 0 4px 10px rgba(46, 125, 50, 0.3);
+        }
+        
+        .package-details {
+            padding: 1.5rem;
+            padding-top: 2rem;
+        }
+        
+        .package-name {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+        
+        .package-attractions {
+            margin-bottom: 1.5rem;
+        }
+        
+        .attractions-title {
+            display: flex;
+            align-items: center;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: var(--dark-color);
+        }
+        
+        .attractions-title svg {
+            margin-right: 0.5rem;
+            fill: var(--primary-color);
+        }
+        
+        .attractions-list {
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        .book-now-btn {
+            width: 100%;
+            padding: 1rem;
+            font-size: 1.1rem;
+            border-radius: 4px;
+            margin-top: 1rem;
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.7);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            overflow-y: auto;
+            padding: 2rem 0;
+        }
+        
+        .modal-content {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 600px;
+            position: relative;
+            animation: modalFadeIn 0.4s;
+        }
+        
+        @keyframes modalFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: #888;
+            transition: color 0.3s;
+        }
+        
+        .close-modal:hover {
+            color: var(--primary-color);
+        }
+        
+        .booking-form {
+            margin-top: 2rem;
+        }
+        
+        .booking-form h3 {
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+            font-size: 1.3rem;
+        }
+        
+        .form-row {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 0 -10px;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+            padding: 0 10px;
+            flex: 1 1 300px;
+        }
+        
+        .form-group input, 
+        .form-group select {
+            width: 100%;
+        }
+        
+        .form-group label {
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+        
+        .modal-package-details {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .modal-package-name {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+        }
+        
+        .modal-package-price {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: var(--accent-color);
+        }
+        
+        .attractions-section {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .success-message {
+            display: none;
+            background-color: #e8f5e9;
+            color: var(--accent-color);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 1.5rem;
+            text-align: center;
+            animation: fadeIn 0.5s;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .success-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--accent-color);
+        }
+        
+        .no-results {
+            text-align: center;
+            padding: 3rem;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .no-results h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+        
+        @media (max-width: 768px) {
+            .packages-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .filter-group {
+                min-width: 100%;
+            }
+            
+            .modal-content {
+                width: 95%;
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>Explore Indore With Our Tour Packages</h1>
+            <p class="header-subtitle">Discover the best of Indore with our specially curated tour packages</p>
+        </div>
+    </header>
+    
+    <div class="container">
+        <div class="filters">
+            <div class="filter-group">
+                <h3 class="filter-title">Find Your Perfect Tour</h3>
+                <div class="form-group">
+                    <label for="interest">Tour Interest</label>
+                    <select id="interest">
+                        <option value="all">All Interests</option>
+                        <option value="nature">Nature & Wildlife</option>
+                        <option value="culture">Culture & Heritage</option>
+                        <option value="spiritual">Spiritual</option>
+                        <option value="food">Food</option>
+                        <option value="adventure">Adventure</option>
+                        <option value="family">Family Friendly</option>
+                        <option value="shopping">Shopping</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="filter-group">
+                <h3 class="filter-title">Duration</h3>
+                <div class="form-group">
+                    <label for="duration">Days</label>
+                    <select id="duration">
+                        <option value="all">Any Duration</option>
+                        <option value="1">1 Day</option>
+                        <option value="2">2 Days</option>
+                        <option value="3">3 Days</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="filter-group">
+                <h3 class="filter-title">Budget</h3>
+                <div class="form-group">
+                    <label for="price">Maximum Price (₹)</label>
+                    <input type="range" id="price" min="2000" max="10000" value="10000" step="500">
+                    <span id="price-value">₹10,000</span>
+                </div>
+            </div>
+            
+            <div class="filter-group">
+                <button class="apply-filters-btn" id="apply-filters">Find Tours</button>
+            </div>
+        </div>
+        
+        <div class="packages-grid" id="packages-grid">
+            <!-- Packages will be dynamically populated here -->
+        </div>
+    </div>
+    
+    <div class="modal" id="booking-modal">
+        <div class="modal-content">
+            <span class="close-modal" id="close-modal">&times;</span>
+            
+            <div class="modal-package-details">
+                <h2 class="modal-package-name" id="modal-package-name">Package Name</h2>
+                <span class="modal-package-price" id="modal-package-price">₹0</span>
+            </div>
+            
+            <div class="attractions-section">
+                <p><strong>Places to visit:</strong> <span id="modal-attractions"></span></p>
+                <p><strong>Duration:</strong> <span id="modal-duration"></span> days</p>
+            </div>
+            
+            <div class="booking-form">
+                <h3>Complete Your Booking</h3>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="tour-date">Tour Start Date</label>
+                        <input type="date" id="tour-date" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="guests">Number of Guests</label>
+                        <select id="guests" required>
+                            <option value="1">1 Person</option>
+                            <option value="2">2 People</option>
+                            <option value="3">3 People</option>
+                            <option value="4">4 People</option>
+                            <option value="5">5 People</option>
+                            <option value="6">6+ People</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="full-name">Full Name</label>
+                        <input type="text" id="full-name" placeholder="Enter your full name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" placeholder="Enter your phone number" required>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" placeholder="Enter your email address" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="special-requests">Special Requests (Optional)</label>
+                        <input type="text" id="special-requests" placeholder="Any special requirements?">
+                    </div>
+                </div>
+                
+                <button id="confirm-booking" class="book-now-btn">Confirm Booking</button>
+                
+                <div class="success-message" id="success-message">
+                    <div class="success-icon">✓</div>
+                    <h3>Booking Confirmed!</h3>
+                    <p>Thank you for booking with us. A confirmation has been sent to your email address.</p>
+                    <p>Our team will contact you soon with further details.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Tour package data
+        const packages = [
+            {
+                id: 1,
+                name: "Highland Adventure",
+                places: ["Patal Pani", "Jam Gate", "Ralamandal Wildlife Sanctuary"],
+                duration: 2,
+                price: 7000,
+                image: "highland.jpg",
+                category: ["nature", "adventure"]
+            },
+            {
+                id: 2,
+                name: "Spiritual Escape",
+                places: ["Khajrana Temple", "Annapurna Temple", "Bada Ganpati"],
+                duration: 2,
+                price: 5000,
+                image: "spiritual.jpg",
+                category: ["spiritual", "culture"]
+            },
+            {
+                id: 3,
+                name: "Royal Indore",
+                places: ["Rajwada", "Lal Bagh Palace", "Krishnapura Chhatris"],
+                duration: 2,
+                price: 6500,
+                image: "royal.jpg",
+                category: ["culture", "heritage"]
+            },
+            {
+                id: 4,
+                name: "Foodie's Delight",
+                places: ["Sarafa Bazaar (night street food)", "Chappan Dukan"],
+                duration: 1,
+                price: 2000,
+                image: "food.jpg",
+                category: ["food"]
+            },
+            {
+                id: 5,
+                name: "Nature Lovers",
+                places: ["Ralamandal Wildlife Sanctuary", "Gulawat Lotus Valley", "Tincha Falls"],
+                duration: 3,
+                price: 8000,
+                image: "nature.jpg",
+                category: ["nature"]
+            },
+            {
+                id: 6,
+                name: "Family Chill Trip",
+                places: ["Indore Zoo", "Safari Adventure Park", "Meghdoot Garden"],
+                duration: 2,
+                price: 6000,
+                image: "family.jpg",
+                category: ["family", "nature"]
+            },
+            {
+                id: 7,
+                name: "Cultural Explorer",
+                places: ["Indore Museum", "Ravindra Natya Grah", "Central Library"],
+                duration: 2,
+                price: 5500,
+                image: "culture.jpg",
+                category: ["culture"]
+            },
+            {
+                id: 8,
+                name: "Shop & Chill",
+                places: ["C21 Mall", "Phoenix Citadel", "Aqua Imagica"],
+                duration: 2,
+                price: 4700,
+                image: "shop.jpg",
+                category: ["shopping", "family"]
+            },
+            {
+                id: 9,
+                name: "Splash & Thrill",
+                places: ["Snow City", "Crescent Water Park", "Shimcha Adventure Park"],
+                duration: 3,
+                price: 4500,
+                image: "water.jpg",
+                category: ["adventure", "family"]
+            },
+            {
+                id: 10,
+                name: "Hidden Gems",
+                places: ["Mohadi Falls", "Kajligarh Fort", "Bamniya Kund"],
+                duration: 3,
+                price: 8500,
+                image: "mohadi.png",
+                category: ["adventure", "nature"]
+            }
+        ];
+
+        // DOM elements
+        const packagesGrid = document.getElementById('packages-grid');
+        const interestFilter = document.getElementById('interest');
+        const durationFilter = document.getElementById('duration');
+        const priceFilter = document.getElementById('price');
+        const priceValue = document.getElementById('price-value');
+        const applyFiltersBtn = document.getElementById('apply-filters');
+        const bookingModal = document.getElementById('booking-modal');
+        const closeModal = document.getElementById('close-modal');
+        const modalPackageName = document.getElementById('modal-package-name');
+        const modalPackagePrice = document.getElementById('modal-package-price');
+        const modalAttractions = document.getElementById('modal-attractions');
+        const modalDuration = document.getElementById('modal-duration');
+        const confirmBookingBtn = document.getElementById('confirm-booking');
+        const successMessage = document.getElementById('success-message');
+        const tourDateInput = document.getElementById('tour-date');
+
+        // Set minimum date to today
+        const today = new Date().toISOString().split('T')[0];
+        tourDateInput.min = today;
+
+        // Update price value display
+        priceFilter.addEventListener('input', () => {
+            const formattedPrice = new Intl.NumberFormat('en-IN', {
+                style: 'currency',
+                currency: 'INR',
+                maximumFractionDigits: 0
+            }).format(priceFilter.value);
+            priceValue.textContent = formattedPrice;
+        });
+
+        // Apply filters
+        applyFiltersBtn.addEventListener('click', filterPackages);
+        
+        // Function to filter packages
+        function filterPackages() {
+            const interest = interestFilter.value;
+            const duration = durationFilter.value;
+            const maxPrice = parseInt(priceFilter.value);
+            
+            let filteredPackages = [...packages];
+            
+            // Apply category filter
+            if (interest !== 'all') {
+                filteredPackages = filteredPackages.filter(pkg => 
+                    pkg.category.includes(interest)
+                );
+            }
+            
+            // Apply duration filter
+            if (duration !== 'all') {
+                filteredPackages = filteredPackages.filter(pkg => 
+                    pkg.duration === parseInt(duration)
+                );
+            }
+            
+            // Apply price filter
+            filteredPackages = filteredPackages.filter(pkg => pkg.price <= maxPrice);
+            
+            // Display filtered packages
+            renderPackages(filteredPackages);
+        }
+        
+        // Render packages
+        function renderPackages(packagesToRender) {
+            packagesGrid.innerHTML = '';
+            
+            if (packagesToRender.length === 0) {
+                packagesGrid.innerHTML = `
+                    <div class="no-results">
+                        <h3>No Tour Packages Found</h3>
+                        <p>Try adjusting your filters to find the perfect tour package.</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            packagesToRender.forEach(pkg => {
+                const packageCard = document.createElement('div');
+                packageCard.className = 'package-card';
+                
+                // Format price for display
+                const formattedPrice = new Intl.NumberFormat('en-IN', {
+                    style: 'currency',
+                    currency: 'INR',
+                    maximumFractionDigits: 0
+                }).format(pkg.price);
+                
+                packageCard.innerHTML = `
+                    <div class="package-image">
+                        <img src="${pkg.image}" alt="${pkg.name}">
+                        <div class="package-duration">${pkg.duration} Day${pkg.duration > 1 ? 's' : ''}</div>
+                        <div class="package-price">${formattedPrice}</div>
+                    </div>
+                    <div class="package-details">
+                        <h3 class="package-name">${pkg.name}</h3>
+                        <div class="package-attractions">
+                            <div class="attractions-title">
+                                <svg width="16" height="16" viewBox="0 0 24 24">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"></path>
+                                    <circle cx="12" cy="10" r="3"></circle>
+                                </svg>
+                                Places to Visit:
+                            </div>
+                            <p class="attractions-list">${pkg.places.join(', ')}</p>
+                        </div>
+                        <button class="book-now-btn" data-package-id="${pkg.id}">Book Now</button>
+                    </div>
+                `;
+                
+                packagesGrid.appendChild(packageCard);
+                
+                // Add event listener to book now button
+                const bookNowBtn = packageCard.querySelector('.book-now-btn');
+                bookNowBtn.addEventListener('click', () => openBookingModal(pkg));
+            });
+        }
+        
+        // Open booking modal
+        function openBookingModal(pkg) {
+            // Format price for display
+            const formattedPrice = new Intl.NumberFormat('en-IN', {
+                style: 'currency',
+                currency: 'INR',
+                maximumFractionDigits: 0
+            }).format(pkg.price);
+            
+            modalPackageName.textContent = pkg.name;
+            modalPackagePrice.textContent = formattedPrice;
+            modalAttractions.textContent = pkg.places.join(', ');
+            modalDuration.textContent = pkg.duration;
+            
+            // Display modal
+            bookingModal.style.display = 'flex';
+            
+            // Hide success message if it was previously shown
+            successMessage.style.display = 'none';
+        }
+        
+        // Close modal
+        closeModal.addEventListener('click', () => {
+            bookingModal.style.display = 'none';
+        });
+        
+        // Close modal when clicking outside
+        window.addEventListener('click', (e) => {
+            if (e.target === bookingModal) {
+                bookingModal.style.display = 'none';
+            }
+        });
+        
+        // Confirm booking
+        confirmBookingBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            
+            // Validate form
+            const tourDate = document.getElementById('tour-date').value;
+            const fullName = document.getElementById('full-name').value;
+            const phone = document.getElementById('phone').value;
+            const email = document.getElementById('email').value;
+            
+            if (!tourDate || !fullName || !phone || !email) {
+                alert('Please fill in all required fields.');
+                return;
+            }
+            
+            // Show success message
+            successMessage.style.display = 'block';
+            
+            // Hide form elements
+            document.querySelectorAll('.form-row, #confirm-booking').forEach(el => {
+                el.style.display = 'none';
+            });
+            
+            // In a real application, you would send the booking data to a server
+        });
+        
+        // Initialize page
+        renderPackages(packages);
+    </script>
+</body>
+</html>

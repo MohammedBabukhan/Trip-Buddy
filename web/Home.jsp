@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -460,7 +461,6 @@
     </style>
 </head>
 <body>
-    <!-- Header -->
     <header>
         <div class="container header-container">
             <div class="logo">Trip Buddy</div>
@@ -468,8 +468,8 @@
                 <li><a href="#">Home</a></li>
                 <!--<li><a href="#">Flights</a></li>-->
                 <li><a href="#">Hotels</a></li>
-                <li><a href="#">Packages</a></li>
-                <li><a href="#">Car Rentals</a></li>
+                <li><a href="Packages.html">Packages</a></li>
+                <li><a href="Rental.html">Car Rentals</a></li>
             </ul>
            <div class="profile-container">
         <a href="Profile.jsp">
@@ -501,11 +501,11 @@
     <div class="form-row">
     <div class="form-group">
         <label for="depart-date">Arrival</label>
-        <input type="date" id="depart-date" class="form-control">
+        <input type="date" id="depart-date" class="form-control" required>
     </div>
     <div class="form-group">
         <label for="return-date">Departure</label>
-        <input type="date" id="return-date" class="form-control">
+        <input type="date" id="return-date" class="form-control" required>
     </div>
     <div class="form-group">
         <label>Travelers</label>
@@ -513,11 +513,11 @@
             <div class="traveler-inputs">
                 <div class="traveler-group">
                     <label for="adults">Adults</label>
-                    <input type="number" id="adults" name="adults" min="1" max="10" value="1" class="form-control">
+                    <input type="number" id="adults" name="adults" min="1" max="10" value="1" class="form-control" required>
                 </div>
                 <div class="traveler-group">
                     <label for="children">Children</label>
-                    <input type="number" id="children" name="children" min="0" max="10" value="0" class="form-control">
+                    <input type="number" id="children" name="children" min="0" max="10" value="0" class="form-control" required>
                 </div>
             </div>
         </div>
@@ -531,27 +531,17 @@
     </section>
     
     <!-- Weather Widget Section -->
-    <div class="container">
-        <div class="weather-widget">
-            <div class="weather-header">
-                <h3>Current Weather</h3>
-                <select id="weather-location">
-                    <option>New York</option>
-                    <option>London</option>
-                    <option>Paris</option>
-                    <option>Tokyo</option>
-                </select>
-            </div>
-            <div class="weather-info">
-                <div class="weather-temp">72°F</div>
-                <div class="weather-details">
-                    <p><strong>New York, USA</strong></p>
-                    <p>Sunny, clear skies</p>
-                    <p>Humidity: 65% | Wind: 5 mph</p>
-                </div>
-            </div>
-        </div>
-    </div>
+   <center>
+       <br>
+       <br>
+            <button class="weather-btn" onclick="checkWeather()">Check Weather Forecast</button>
+</center>
+<script>
+  function checkWeather() {
+    window.location.href = "weather1.jsp";
+  }
+</script>
+
 <section class="services" style="display: flex; justify-content: center; align-items: center; min-height: 100vh;">
         <div class="container" style="max-width: 1200px; margin: 0 auto;">
             <div class="section-title" style="text-align: center;">
@@ -627,24 +617,24 @@
                 </div>
                 
                 <div class="service-card">
-                    <div class="service-img">
-                        <img src"" alt="New York">
+                    <div class="service-card">
+                        <img src="kanchmandir1.jpg" alt="Kaanch Mandir" height="200px" width="100%">
                     </div>
                     <div class="service-content">
-                        <h3>New York, USA</h3>
-                        <p>The city that never sleeps.</p>
-                        <a href="#" class="btn btn-outline">View Deals</a>
+                        <h3>Kaanch Mandir</h3>
+                        <!--<p>The city that never sleeps.</p>-->
+                        <a href="#" class="btn btn-outline">View Details</a>
                     </div>
                 </div>
                 
                 <div class="service-card">
                     <div class="service-img">
-                        <img src="/api/placeholder/400/300" alt="Tokyo">
+                        <img src="Patalpani.jpg" alt="Patalpani Waterfall" height="200px" width="100%">
                     </div>
                     <div class="service-content">
-                        <h3>Tokyo, Japan</h3>
-                        <p>A perfect blend of tradition and modernity.</p>
-                        <a href="#" class="btn btn-outline">View Deals</a>
+                        <h3>Patalpani Waterfall</h3>
+                        <!--<p>A perfect blend of tradition and modernity.</p>-->
+                        <a href="#" class="btn btn-outline">View Details</a>
                     </div>
                 </div>
             </div>

@@ -416,13 +416,34 @@
     
     .traveler-group label {
         display: block;
-        margin-bottom: 8px;
+        margin-bottom: 2px;
         font-weight: normal;
     }
     
     input[type="number"] {
         text-align: center;
     }
+    .weather-btn {
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            padding: 15px 30px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 10px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s, box-shadow 0.3s;
+        }
+
+        .weather-btn:hover {
+            background-color: #2980b9;
+            box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        .weather-btn:active {
+            background-color: #1f5f8b;
+            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+        }
     </style>
 </head>
 <body>
@@ -454,9 +475,10 @@
             <div class="search-form">
                 <div class="form-tabs">
                     <!--<div class="form-tab active">Flights</div>-->
-                    <div class="form-tab active">Hotels</div>
-                    <div class="form-tab">Packages</div>
-                    <div class="form-tab">Car Rentals</div>
+                <div class="form-tab" data-tab="hotels">Hotels</div>
+                <div class="form-tab" data-tab="packages">Packages</div>
+                <div class="form-tab" data-tab="cars">Car Rentals</div>
+
                 </div>
                 
                 <form method="get" action="Search">
@@ -464,11 +486,11 @@
     <div class="form-row">
     <div class="form-group">
         <label for="depart-date">Arrival</label>
-        <input type="date" id="depart-date" class="form-control">
+        <input type="date" id="depart-date" class="form-control" required>
     </div>
     <div class="form-group">
         <label for="return-date">Departure</label>
-        <input type="date" id="return-date" class="form-control">
+        <input type="date" id="return-date" class="form-control" required>
     </div>
     <div class="form-group">
         <label>Travelers</label>
@@ -476,11 +498,11 @@
             <div class="traveler-inputs">
                 <div class="traveler-group">
                     <label for="adults">Adults</label>
-                    <input type="number" id="adults" name="adults" min="1" max="10" value="1" class="form-control">
+                    <input type="number" id="adults" name="adults" min="1" max="10" value="1" class="form-control" required>
                 </div>
                 <div class="traveler-group">
                     <label for="children">Children</label>
-                    <input type="number" id="children" name="children" min="0" max="10" value="0" class="form-control">
+                    <input type="number" id="children" name="children" min="0" max="10" value="0" class="form-control" required>
                 </div>
             </div>
         </div>
@@ -492,29 +514,49 @@
             </div>
         </div>
     </section>
-    
-    <!-- Weather Widget Section -->
-    <div class="container">
-        <div class="weather-widget">
-            <div class="weather-header">
-                <h3>Current Weather</h3>
-                <select id="weather-location">
-                    <option>New York</option>
-                    <option>London</option>
-                    <option>Paris</option>
-                    <option>Tokyo</option>
-                </select>
-            </div>
-            <div class="weather-info">
-                <div class="weather-temp">72°F</div>
-                <div class="weather-details">
-                    <p><strong>New York, USA</strong></p>
-                    <p>Sunny, clear skies</p>
-                    <p>Humidity: 65% | Wind: 5 mph</p>
-                </div>
-            </div>
-        </div>
-    </div>
+     
+                <script>
+        // Initialize the page with Hotels tab active
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set first tab as active
+            const tabs = document.querySelectorAll('.form-tab');
+            tabs[0].classList.add('active');
+            
+            // Show corresponding form section
+            const hotelsSection = document.getElementById('hotels-section');
+            hotelsSection.classList.add('active');
+            
+            // Add click event to tabs
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    // Remove active class from all tabs
+                    tabs.forEach(t => t.classList.remove('active'));
+                    
+                    // Add active class to clicked tab
+                    this.classList.add('active');
+                    
+                    // Hide all form sections
+                    const sections = document.querySelectorAll('.form-section');
+                    sections.forEach(section => section.classList.remove('active'));
+                    
+                    // Show corresponding section
+                    const tabName = this.getAttribute('data-tab');
+                    const activeSection = document.getElementById(tabName + '-section');
+                    activeSection.classList.add('active');
+                });
+            });
+            </script>
+<center>
+    <br>
+    <br>
+            <button class="weather-btn" onclick="checkWeather()">Check Weather Forecast</button>
+</center>
+<script>
+  function checkWeather() {
+    window.location.href = "weather1.jsp";
+  }
+</script>
+
 <section class="services" style="display: flex; justify-content: center; align-items: center; min-height: 100vh;">
         <div class="container" style="max-width: 1200px; margin: 0 auto;">
             <div class="section-title" style="text-align: center;">
@@ -573,8 +615,8 @@
                     </div>
                     <div class="service-content">
                         <h3>Rajwada Palace</h3>
-                        <p>The city of lights and romance.</p>
-                        <a href="#" class="btn btn-outline">View Deals</a>
+                        <!--<p>The city of lights and romance.</p>-->
+                        <!--<a href="#" class="btn btn-outline">View Details</a>-->
                     </div>
                 </div>
                 
@@ -584,30 +626,30 @@
                     </div>
                     <div class="service-content">
                         <h3>Lotus Valley</h3>
-                        <p>Tropical paradise with beautiful beaches.</p>
-                        <a href="#" class="btn btn-outline">View Deals</a>
+                        <!--<p>Tropical paradise with beautiful beaches.</p>-->
+                        <!--<a href="#" class="btn btn-outline">View Details</a>-->
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-card">
+                        <img src="kanchmandir1.jpg" alt="Kaanch Mandir" height="200px" width="100%">
+                    </div>
+                    <div class="service-content">
+                        <h3>Kaanch Mandir</h3>
+                        <!--<p>The city that never sleeps.</p>-->
+                        <!--<a href="#" class="btn btn-outline">View Details</a>-->
                     </div>
                 </div>
                 
                 <div class="service-card">
                     <div class="service-img">
-                        <img src"" alt="New York">
+                        <img src="Patalpani.jpg" alt="Patalpani Waterfall" height="200px" width="100%">
                     </div>
                     <div class="service-content">
-                        <h3>New York, USA</h3>
-                        <p>The city that never sleeps.</p>
-                        <a href="#" class="btn btn-outline">View Deals</a>
-                    </div>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-img">
-                        <img src="/api/placeholder/400/300" alt="Tokyo">
-                    </div>
-                    <div class="service-content">
-                        <h3>Tokyo, Japan</h3>
-                        <p>A perfect blend of tradition and modernity.</p>
-                        <a href="#" class="btn btn-outline">View Deals</a>
+                        <h3>Patalpani Waterfall</h3>
+                        <!--<p>A perfect blend of tradition and modernity.</p>-->
+                        <!--<a href="#" class="btn btn-outline">View Details</a>-->
                     </div>
                 </div>
             </div>
@@ -676,38 +718,7 @@
     <!-- JavaScript for interactivity -->
     <script>
         // Form tab switcher
-        const formTabs = document.querySelectorAll('.form-tab');
-        formTabs.forEach(tab => {
-            tab.addEventListener('click', () => {
-                formTabs.forEach(t => t.classList.remove('active'));
-                tab.classList.add('active');
-                // Here you would normally also change the form fields
-            });
-        });
         
-        // Simple weather widget location changer
-        const weatherLocation = document.getElementById('weather-location');
-        const weatherTemp = document.querySelector('.weather-temp');
-        const weatherCity = document.querySelector('.weather-details p:first-child strong');
-        
-        weatherLocation.addEventListener('change', () => {
-            const location = weatherLocation.value;
-            // In a real application, you would fetch actual weather data here
-            // This is just a mock change
-            if (location === 'London') {
-                weatherTemp.textContent = '65°F';
-                weatherCity.textContent = 'London, UK';
-            } else if (location === 'Paris') {
-                weatherTemp.textContent = '68°F';
-                weatherCity.textContent = 'Paris, France';
-            } else if (location === 'Tokyo') {
-                weatherTemp.textContent = '75°F';
-                weatherCity.textContent = 'Tokyo, Japan';
-            } else {
-                weatherTemp.textContent = '72°F';
-                weatherCity.textContent = 'New York, USA';
-            }
-        });
          document.getElementById('loginButton').addEventListener('click', function() {
             window.location.href = 'Login.jsp';
         });
