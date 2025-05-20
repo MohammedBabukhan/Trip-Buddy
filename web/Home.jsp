@@ -458,6 +458,27 @@
         .profile-container:hover .tooltip {
             display: block;
         }
+        .weather-btn {
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            padding: 15px 30px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 10px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s, box-shadow 0.3s;
+        }
+
+        .weather-btn:hover {
+            background-color: #2980b9;
+            box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        .weather-btn:active {
+            background-color: #1f5f8b;
+            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+        }
     </style>
 </head>
 <body>
